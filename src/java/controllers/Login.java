@@ -7,6 +7,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -106,7 +107,11 @@ public class Login extends HttpServlet {
             UserLogin ul = new UserLogin(request.getParameter("username"),request.getParameter("password"));
             if(ul.equals(userLogin)) {
                 // do something
-                String path = "WEB-INF/jsps/privatebanking.jsp";
+                String path = "WEB-INF/views/privatebanking.jsp";
+                LocalDateTime dt = LocalDateTime.now();
+                request.setAttribute("login_datetime", dt);
+                request.setAttribute("user_role", "SuperAdmin");
+                request.setAttribute("ul", ul);
                 RequestDispatcher rd = request.getRequestDispatcher(path);
                 rd.forward(request, response);
                 out.println("All good!!!");

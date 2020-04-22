@@ -14,6 +14,8 @@ import java.util.Objects;
 public class UserLogin {
     private String username;
     private String password;
+    String firstName;
+    String lastName;
 
     public UserLogin(String username, String password) {
         this.username = username;
