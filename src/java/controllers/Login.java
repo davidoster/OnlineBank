@@ -109,11 +109,13 @@ public class Login extends HttpServlet {
                 // do something
                 String path = "WEB-INF/views/privatebanking.jsp";
                 LocalDateTime dt = LocalDateTime.now();
+                out.print("user = " + request.getAttribute("user"));
                 request.setAttribute("login_datetime", dt);
                 request.setAttribute("user_role", "SuperAdmin");
                 request.setAttribute("ul", ul);
+                out.print("ul = " + request.getAttribute("ul"));
                 RequestDispatcher rd = request.getRequestDispatcher(path);
-                rd.forward(request, response);
+//                rd.forward(request, response);
                 out.println("All good!!!");
             } else
             {
